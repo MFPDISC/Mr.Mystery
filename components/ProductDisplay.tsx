@@ -26,8 +26,8 @@ export default function ProductDisplay() {
 
                         <div className="relative h-full w-full border border-white/20 bg-black p-2 overflow-hidden">
                             <Image
-                                src="/continental-cover.png"
-                                alt="CONTINENTAL CD Cover"
+                                src="/hero-image.jpg"
+                                alt="INTENTION CD Cover"
                                 fill
                                 className="object-cover opacity-90 group-hover:opacity-100 transition-opacity duration-500"
                             />
@@ -49,7 +49,7 @@ export default function ProductDisplay() {
                                 <span className="w-2 h-2 bg-red-500 rounded-full animate-pulse" />
                                 <span className="text-red-500 text-xs tracking-widest uppercase font-mono">Restocked</span>
                             </div>
-                            <h2 className="text-4xl md:text-6xl font-bold tracking-[0.2em] mb-2">CONTINENTAL</h2>
+                            <h2 className="text-4xl md:text-6xl font-bold tracking-[0.2em] mb-2">INTENTION</h2>
                             <p className="text-white/50 text-sm tracking-widest uppercase mb-6">Physical Compact Disc</p>
                         </div>
 

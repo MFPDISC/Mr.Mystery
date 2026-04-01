@@ -12,35 +12,10 @@ import { motion } from 'framer-motion'
 
 export default function Home() {
   const [showLanding, setShowLanding] = useState(true)
-  const [currentSection, setCurrentSection] = useState('tape')
-  const [continentalMode, setContinentalMode] = useState(false)
-  const [timeOnSite, setTimeOnSite] = useState(0)
-  const [showGlitch, setShowGlitch] = useState(false)
-
-  // Timer for Continental Mode secret feature (3 minutes)
-  useEffect(() => {
-    if (!showLanding) {
-      const interval = setInterval(() => {
-        setTimeOnSite(prev => prev + 1)
-      }, 1000)
-
-      return () => clearInterval(interval)
-    }
-  }, [showLanding])
-
-  // Trigger glitch effect after 3 minutes (180 seconds)
-  useEffect(() => {
-    if (timeOnSite >= 180 && !showGlitch) {
-      setShowGlitch(true)
-    }
-  }, [timeOnSite, showGlitch])
+  const [currentSection, setCurrentSection] = useState('new-release')
 
   const handleTuneIn = () => {
     setShowLanding(false)
-  }
-
-  const toggleContinentalMode = () => {
-    setContinentalMode(!continentalMode)
   }
 
   // Track active section on scroll
@@ -48,7 +23,7 @@ export default function Home() {
     if (typeof window === 'undefined' || showLanding) return
 
     const handleScroll = () => {
-      const sections = ['tape', 'vault', 'product', 'streaming', 'transmit']
+      const sections = ['new-release', 'vault', 'product', 'streaming', 'transmit']
       const scrollPosition = window.scrollY + window.innerHeight / 2
 
       for (const section of sections) {
@@ -72,7 +47,7 @@ export default function Home() {
   }
 
   return (
-    <main className={`min-h-screen ${continentalMode ? 'continental-mode' : 'bg-background text-white'}`}>
+    <main className={`min-h-screen bg-background text-white`}>
       {/* Grain overlay for entire site */}
       <div className="grain-overlay fixed inset-0 pointer-events-none z-0" />
 
@@ -94,11 +69,7 @@ export default function Home() {
               ON-SET
             </motion.div>
             <motion.h1
-              className={`text-2xl md:text-4xl font-bold tracking-[0.3em] cursor-pointer ${showGlitch ? 'glitch-text' : ''
-                }`}
-              data-text="BROADCAST"
-              onClick={showGlitch ? toggleContinentalMode : undefined}
-              whileHover={showGlitch ? { scale: 1.05 } : {}}
+              className="text-2xl md:text-4xl font-bold tracking-[0.3em]"
             >
               BROADCAST
             </motion.h1>
@@ -108,21 +79,12 @@ export default function Home() {
             <div className="hidden md:block text-white/40 text-xs tracking-widest uppercase font-mono">
               MR.MYSTERY // 2026
             </div>
-            {showGlitch && (
-              <motion.div
-                initial={{ opacity: 0, scale: 0 }}
-                animate={{ opacity: 1, scale: 1 }}
-                className="text-transmission text-xs tracking-widest uppercase"
-              >
-                [ CLICK BROADCAST ]
-              </motion.div>
-            )}
           </div>
         </div>
       </motion.header>
 
       {/* Main Content - with padding for fixed header */}
-      <div className={`pt-24 relative z-10 transition-all duration-700 ${continentalMode ? 'scale-[0.98] brightness-125' : ''}`}>
+      <div className={`pt-24 relative z-10 transition-all duration-700`}>
         <NewRelease />
         <TheVault />
         <ProductDisplay />
@@ -130,27 +92,7 @@ export default function Home() {
         <Transmit />
       </div>
 
-      {/* Continental Mode Countdown (when active) */}
-      {continentalMode && (
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          className="fixed bottom-8 left-1/2 transform -translate-x-1/2 z-50 w-[90%] max-w-md"
-        >
-          <div className="bg-background border-2 border-white px-8 py-6 shadow-[20px_20px_0px_rgba(255,255,255,0.1)]">
-            <p className="text-white text-md tracking-[0.2em] font-bold uppercase text-center mb-2">
-              CONTINENTAL MODE ACTIVE
-            </p>
-            <div className="h-px bg-white/20 w-full mb-4" />
-            <p className="text-white/60 text-xs tracking-wider text-center font-mono">
-              OFFICIAL DROP: JANUARY 2026
-            </p>
-            <p className="text-transmission text-[10px] text-center mt-4 font-mono animate-pulse">
-              [ SECURED VIA ON-SET RECORDS ]
-            </p>
-          </div>
-        </motion.div>
-      )}
+
 
       {/* Footer */}
       <footer className="border-t border-white/10 py-12 bg-dark-grey relative z-10">
@@ -161,7 +103,7 @@ export default function Home() {
             <span className="text-xs font-mono tracking-tighter">MR.MYSTERY</span>
           </div>
           <p className="text-white/40 text-[10px] tracking-[0.4em] uppercase mb-4">
-            CONTINENTAL (the tape)
+            NEW TRANSMISSIONS INCOMING
           </p>
           <p className="text-white/20 text-[8px] tracking-wider font-mono">
             ALL TRANSMISSIONS ENCRYPTED // ON-SET MEDIA CORP © 2026

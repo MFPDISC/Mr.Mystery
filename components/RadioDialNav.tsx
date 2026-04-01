@@ -7,16 +7,15 @@ interface RadioDialNavProps {
     currentSection?: string
 }
 
-export default function RadioDialNav({ currentSection = 'tape' }: RadioDialNavProps) {
+export default function RadioDialNav({ currentSection = 'new-release' }: RadioDialNavProps) {
     const [isHovered, setIsHovered] = useState(false)
 
     const sections = [
-        { id: 'tape', label: '01 // THE TAPE', href: '#tape' },
-        { id: 'frequency', label: '02 // THE FREQUENCY', href: '#frequency' },
-        { id: 'vault', label: '03 // THE VAULT', href: '#vault' },
-        { id: 'product', label: '04 // CONTINENTAL', href: '#product' },
-        { id: 'streaming', label: '05 // FREQUENCIES', href: '#streaming' },
-        { id: 'transmit', label: '06 // TRANSMIT', href: '#transmit' },
+        { id: 'new-release', label: '01 // INTENTION', href: '#new-release' },
+        { id: 'vault', label: '02 // THE VAULT', href: '#vault' },
+        { id: 'product', label: '03 // MERCH CAPSULE', href: '#product' },
+        { id: 'streaming', label: '04 // FREQUENCIES', href: '#streaming' },
+        { id: 'transmit', label: '05 // TRANSMIT', href: '#transmit' },
     ]
 
     const scrollToSection = (href: string) => {

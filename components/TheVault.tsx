@@ -61,7 +61,7 @@ export default function TheVault() {
                                     <p className="text-black/60 text-sm handwritten">
                                         {item === 1 && 'by the sea sessions'}
                                         {item === 2 && 'late night in the booth'}
-                                        {item === 3 && 'continental vibes'}
+                                        {item === 3 && 'late night vibes'}
                                         {item === 4 && 'broadcast ready'}
                                     </p>
                                 </div>
@@ -116,11 +116,11 @@ export default function TheVault() {
                             </div>
 
                             <h3 className="text-black text-2xl md:text-3xl mb-6 text-center handwritten">
-                                CONTINENTAL (the tape)
+                                UNRELEASED CUTS
                             </h3>
 
                             <div className="space-y-3 text-black handwritten text-lg">
-                                <p>01. CONTINENTAL (INTRO)</p>
+                                <p>01. UNTITLED (INTRO)</p>
                                 <p>02. LACK HONESTY FT. B-RAIZ</p>
                                 <p>03. DAY-TO-DAY FT. YUNGSMOKE</p>
                                 <p>04. LONG SHOT</p>
