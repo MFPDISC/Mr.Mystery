@@ -3,6 +3,7 @@
 import { useState, useEffect } from 'react'
 import SignalLanding from '@/components/SignalLanding'
 import NewRelease from '@/components/NewRelease'
+import UnreleasedSection from '@/components/UnreleasedSection'
 import Transmit from '@/components/Transmit'
 import StreamingLinks from '@/components/StreamingLinks'
 import { motion } from 'framer-motion'
@@ -55,6 +56,7 @@ export default function Home() {
       {/* Main Content - with padding for fixed header */}
       <div className={`pt-24 relative z-10 transition-all duration-700`}>
         <NewRelease />
+        <UnreleasedSection />
         <StreamingLinks />
         <Transmit />
       </div>
