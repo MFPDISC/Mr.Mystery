@@ -59,7 +59,7 @@ export default function UnreleasedSection() {
                         </span>
                     </div>
                     <h2 className="text-4xl md:text-6xl font-bold tracking-[0.3em] mb-4">
-                        UNRELEASED
+                        UNRELEASED DEMOS
                     </h2>
                     <p className="text-white/40 text-[10px] md:text-xs tracking-widest uppercase font-mono">
                         Direct Studio Transmissions // Early Fragments
