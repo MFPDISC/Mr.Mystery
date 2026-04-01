@@ -181,13 +181,10 @@ export default function NewRelease() {
                         </div>
                     </div>
 
-                    {/* 
-                      Drop your audio preview clip into the public folder and swap the src!
-                      Example: src="/intention-preview.mp3" 
-                    */}
+                    {/* Audio element hooked up to the local MP3 file */}
                     <audio 
                         ref={audioRef} 
-                        // src="/audio/intention-preview.mp3" 
+                        src="/Mr.Mystery/intention.mp3" 
                         onEnded={() => setIsPlaying(false)}
                         className="hidden" 
                     />
