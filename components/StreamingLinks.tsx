@@ -1,37 +1,44 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import { ExternalLink, Music, Disc, Radio, Youtube } from 'lucide-react'
+import { ExternalLink, Music, Disc, Radio, Youtube, Instagram } from 'lucide-react'
 
 export default function StreamingLinks() {
     const links = [
         {
             name: 'SPOTIFY',
             icon: Disc,
-            url: '#',
+            url: 'https://open.spotify.com/artist/2sHBjhLpyKfZrCgRyJCxj2?si=4SmqgkhuTo-IEARgY_ckfw',
             color: 'hover:text-[#1DB954]',
             description: 'Latest Releases'
         },
         {
             name: 'APPLE MUSIC',
             icon: Music,
-            url: '#',
+            url: 'https://music.apple.com/za/artist/mr-mystery/1697213875',
             color: 'hover:text-[#FA243C]',
             description: 'High Fidelity'
         },
         {
             name: 'SOUNDCLOUD',
             icon: Radio,
-            url: '#',
+            url: 'https://on.soundcloud.com/Pdmj7uTlhBG9YzPRQp',
             color: 'hover:text-[#FF5500]',
             description: 'Underground Cuts'
         },
         {
             name: 'YOUTUBE',
             icon: Youtube,
-            url: '#',
+            url: 'https://www.youtube.com/channel/UCmCTdNVs3R0YNWB_kSmy78A',
             color: 'hover:text-[#FF0000]',
             description: 'Visuals & Vlogs'
+        },
+        {
+            name: 'INSTAGRAM',
+            icon: Instagram,
+            url: 'https://www.instagram.com/mr.mystery.wav?igsh=OXFxcmE3Y2NnM25t&utm_source=qr',
+            color: 'hover:text-[#E1306C]',
+            description: 'Transmissions & Visuals'
         }
     ]
 

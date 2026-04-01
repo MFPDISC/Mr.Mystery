@@ -207,14 +207,14 @@ export default function NewRelease() {
                         </div>
                     ) : (
                         <div className="w-full max-w-sm flex flex-col gap-4">
-                            <button className="group relative w-full flex items-center justify-center gap-3 p-4 border border-white hover:bg-white hover:text-black transition-all duration-300 font-bold tracking-[0.2em]">
+                            <a href="https://open.spotify.com/artist/2sHBjhLpyKfZrCgRyJCxj2?si=4SmqgkhuTo-IEARgY_ckfw" target="_blank" rel="noopener noreferrer" className="group relative w-full flex items-center justify-center gap-3 p-4 border border-white hover:bg-white hover:text-black transition-all duration-300 font-bold tracking-[0.2em]">
                                 <span>SPOTIFY</span>
                                 <ExternalLink className="w-4 h-4" />
-                            </button>
-                            <button className="group relative w-full flex items-center justify-center gap-3 p-4 border border-white hover:bg-white hover:text-black transition-all duration-300 font-bold tracking-[0.2em]">
+                            </a>
+                            <a href="https://music.apple.com/za/artist/mr-mystery/1697213875" target="_blank" rel="noopener noreferrer" className="group relative w-full flex items-center justify-center gap-3 p-4 border border-white hover:bg-white hover:text-black transition-all duration-300 font-bold tracking-[0.2em]">
                                 <span>APPLE MUSIC</span>
                                 <ExternalLink className="w-4 h-4" />
-                            </button>
+                            </a>
                         </div>
                     )}
                 </motion.div>
