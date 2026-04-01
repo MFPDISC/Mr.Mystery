@@ -18,7 +18,7 @@ export default function UnreleasedSection() {
 
     // Tracks array - we'll fill the file paths once you drop the MP3s!
     const tracks: Track[] = [
-        { id: 'track-01', title: 'SUSPENSION', duration: '3:45', file: '/Mr.Mystery/audio/suspension.wav' },
+        { id: 'track-01', title: 'SUSPENSION', duration: '3:45', file: '/Mr.Mystery/audio/suspension.mp3' },
     ]
 
     const togglePlay = (track: Track) => {
