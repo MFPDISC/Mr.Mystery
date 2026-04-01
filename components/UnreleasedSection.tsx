@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useRef } from 'react'
+import { useState, useRef, useEffect } from 'react'
 import { motion } from 'framer-motion'
 import { Play, Pause, Lock } from 'lucide-react'
 
@@ -10,6 +10,37 @@ interface Track {
     duration: string
     file?: string
     isLocked?: boolean
+    unlockTime?: string // ISO format date
+}
+
+function TrackCountdown({ unlockTime }: { unlockTime?: string }) {
+    const [timeLeft, setTimeLeft] = useState<string>('LOCKED')
+
+    useEffect(() => {
+        if (!unlockTime) return
+
+        const timer = setInterval(() => {
+            const now = new Date().getTime()
+            const target = new Date(unlockTime).getTime()
+            const distance = target - now
+
+            if (distance < 0) {
+                clearInterval(timer)
+                setTimeLeft('UNLOCKING...')
+                return
+            }
+
+            const hours = Math.floor(distance / (1000 * 60 * 60))
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60))
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000)
+
+            setTimeLeft(`LOCK: ${String(hours).padStart(2, '0')}:${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`)
+        }, 1000)
+
+        return () => clearInterval(timer)
+    }, [unlockTime])
+
+    return <span className="text-transmission animate-pulse">{timeLeft}</span>
 }
 
 export default function UnreleasedSection() {
@@ -19,7 +50,7 @@ export default function UnreleasedSection() {
     // Tracks array - we'll fill the file paths once you drop the MP3s!
     const tracks: Track[] = [
         { id: 'track-01', title: 'SUSPENSION', duration: '3:45', file: '/Mr.Mystery/audio/suspension.mp3' },
-        { id: 'track-02', title: 'ISOLATION', duration: '4:12', file: '/Mr.Mystery/audio/isolation.mp3', isLocked: true },
+        { id: 'track-02', title: 'ISOLATION', duration: '4:12', file: '/Mr.Mystery/audio/isolation.mp3', isLocked: true, unlockTime: '2026-04-03T12:52:00' },
     ]
 
     const togglePlay = (track: Track) => {
@@ -109,7 +140,9 @@ export default function UnreleasedSection() {
                                             </h3>
                                         </div>
                                         <p className="text-[9px] md:text-[10px] tracking-widest text-white/40 uppercase font-mono">
-                                            {track.isLocked ? 'LOCKED // ENCRYPTION REQUIRED' : 'BROADCAST_READY'}
+                                            {track.isLocked ? (
+                                                <TrackCountdown unlockTime={track.unlockTime} />
+                                            ) : 'BROADCAST_READY'}
                                         </p>
                                     </div>
                                 </div>
