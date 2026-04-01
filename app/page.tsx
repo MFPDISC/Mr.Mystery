@@ -55,7 +55,7 @@ export default function Home() {
 
       {/* Main Content - with padding for fixed header */}
       <div className={`pt-24 relative z-10 transition-all duration-700`}>
-        {/* <NewRelease /> */}
+        <NewRelease />
         <UnreleasedSection />
         <StreamingLinks />
         <Transmit />
