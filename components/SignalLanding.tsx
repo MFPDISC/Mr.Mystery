@@ -38,11 +38,11 @@ export default function SignalLanding({ onTuneIn }: SignalLandingProps) {
         // Wait for glitch animation then call onTuneIn
         setTimeout(() => {
             onTuneIn()
-        }, 1500)
+        }, 300)
     }
 
     return (
-        <div className="fixed inset-0 bg-black flex items-center justify-center overflow-hidden crt-effect">
+        <div className="fixed inset-0 bg-black flex flex-col items-center justify-center overflow-hidden crt-effect">
             {/* Hero Background Image with Slow Zoom */}
             <motion.div
                 initial={{ scale: 1.1, opacity: 0 }}
@@ -71,8 +71,8 @@ export default function SignalLanding({ onTuneIn }: SignalLandingProps) {
             <motion.div
                 initial={{ opacity: 0, scale: 0 }}
                 animate={{ opacity: 1, scale: 1 }}
-                transition={{ duration: 2, delay: 0.5 }}
-                className="relative z-10"
+                transition={{ duration: 1, delay: 0.1 }}
+                className="relative z-10 mb-8"
             >
                 <div className="flickering-dot" />
             </motion.div>
@@ -81,8 +81,8 @@ export default function SignalLanding({ onTuneIn }: SignalLandingProps) {
             <motion.div
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
-                transition={{ duration: 1, delay: 2.5 }}
-                className="absolute bottom-20 left-0 right-0 text-center z-20"
+                transition={{ duration: 0.5, delay: 0.4 }}
+                className="relative z-20 text-center"
             >
                 <button
                     onClick={handleTuneIn}
@@ -105,8 +105,8 @@ export default function SignalLanding({ onTuneIn }: SignalLandingProps) {
             <motion.div
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
-                transition={{ duration: 1, delay: 3.5 }}
-                className="absolute bottom-8 left-0 right-0 text-center z-20"
+                transition={{ duration: 0.5, delay: 0.8 }}
+                className="relative z-20 text-center mt-6"
             >
                 <p className="text-white/30 text-xs tracking-widest uppercase">
                     Click to enter
