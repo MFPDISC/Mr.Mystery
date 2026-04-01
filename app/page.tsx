@@ -2,7 +2,6 @@
 
 import { useState, useEffect } from 'react'
 import SignalLanding from '@/components/SignalLanding'
-import RadioDialNav from '@/components/RadioDialNav'
 import NewRelease from '@/components/NewRelease'
 import Transmit from '@/components/Transmit'
 import StreamingLinks from '@/components/StreamingLinks'
@@ -10,35 +9,10 @@ import { motion } from 'framer-motion'
 
 export default function Home() {
   const [showLanding, setShowLanding] = useState(true)
-  const [currentSection, setCurrentSection] = useState('new-release')
 
   const handleTuneIn = () => {
     setShowLanding(false)
   }
-
-  // Track active section on scroll
-  useEffect(() => {
-    if (typeof window === 'undefined' || showLanding) return
-
-    const handleScroll = () => {
-      const sections = ['new-release', 'streaming', 'transmit']
-      const scrollPosition = window.scrollY + window.innerHeight / 2
-
-      for (const section of sections) {
-        const element = document.getElementById(section)
-        if (element) {
-          const { offsetTop, offsetHeight } = element
-          if (scrollPosition >= offsetTop && scrollPosition < offsetTop + offsetHeight) {
-            setCurrentSection(section)
-            break
-          }
-        }
-      }
-    }
-
-    window.addEventListener('scroll', handleScroll)
-    return () => window.removeEventListener('scroll', handleScroll)
-  }, [showLanding])
 
   if (showLanding) {
     return <SignalLanding onTuneIn={handleTuneIn} />
@@ -48,9 +22,6 @@ export default function Home() {
     <main className={`min-h-screen bg-background text-white`}>
       {/* Grain overlay for entire site */}
       <div className="grain-overlay fixed inset-0 pointer-events-none z-0" />
-
-      {/* Radio Dial Navigation */}
-      <RadioDialNav currentSection={currentSection} />
 
       {/* BROADCAST Header with Glitch Effect */}
       <motion.header
