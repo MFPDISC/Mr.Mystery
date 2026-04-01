@@ -203,7 +203,9 @@ export default function NewRelease() {
                     {!isReleased ? (
                         <div className="w-full max-w-sm">
                             <a 
-                                href="#" 
+                                href="https://distrokid.com/hyperfollow/mrmystery/intention?utm_campaign=website&utm_medium=Email+&utm_source=SendGrid&utm_content=link_in_bio&fbclid=PAdGRleAQ6U_hleHRuA2FlbQIxMQBzcnRjBmFwcF9pZA8xMjQwMjQ1NzQyODc0MTQAAae5yO_YX1GrRDY1vyV2P138x_JJ1wOnW0dLjo-jkVZOGgHpltAEoritk0yfFg_aem_taVRHMZTtGKnYyy7ZUNpXw" 
+                                target="_blank"
+                                rel="noopener noreferrer"
                                 className="group relative w-full flex items-center justify-center gap-3 p-4 border-2 border-white bg-white text-black hover:bg-black hover:text-white transition-all duration-300 font-bold tracking-[0.2em]"
                             >
                                 <span>PRE-SAVE NOW</span>
