@@ -47,21 +47,14 @@ export default function NewRelease() {
 
     return (
         <section id="new-release" className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden bg-black text-white px-4 py-24 border-b border-white/10">
-            {/* Video Background */}
+            {/* Background Image */}
             <div className="absolute inset-0 w-full h-full z-0 overflow-hidden">
-                {/* 
-                  Drop your video clip into the public folder and replace the src here!
-                  Example: src="/intention-loop.mp4" 
-                */}
-                <video 
-                    autoPlay 
-                    loop 
-                    muted 
-                    playsInline 
+                <img 
+                    src="/Mr.Mystery/intention-cover.jpg"
+                    alt="INTENTION Cover Background"
                     className="absolute inset-0 w-full h-full object-cover opacity-40 grayscale contrast-125 mix-blend-screen"
-                    // src="/videos/your-clip.mp4"
                 />
-                {/* Fallback image incase video isn't there yet */}
+                {/* Fallback Gradient */}
                 <div className="absolute inset-0 bg-gradient-to-t from-background via-background/40 to-background z-10" />
                 <div className="grain-overlay absolute inset-0 z-20" />
             </div>

@@ -4,9 +4,7 @@ import { useState, useEffect } from 'react'
 import SignalLanding from '@/components/SignalLanding'
 import RadioDialNav from '@/components/RadioDialNav'
 import NewRelease from '@/components/NewRelease'
-import TheVault from '@/components/TheVault'
 import Transmit from '@/components/Transmit'
-import ProductDisplay from '@/components/ProductDisplay'
 import StreamingLinks from '@/components/StreamingLinks'
 import { motion } from 'framer-motion'
 
@@ -23,7 +21,7 @@ export default function Home() {
     if (typeof window === 'undefined' || showLanding) return
 
     const handleScroll = () => {
-      const sections = ['new-release', 'vault', 'product', 'streaming', 'transmit']
+      const sections = ['new-release', 'streaming', 'transmit']
       const scrollPosition = window.scrollY + window.innerHeight / 2
 
       for (const section of sections) {
@@ -86,8 +84,6 @@ export default function Home() {
       {/* Main Content - with padding for fixed header */}
       <div className={`pt-24 relative z-10 transition-all duration-700`}>
         <NewRelease />
-        <TheVault />
-        <ProductDisplay />
         <StreamingLinks />
         <Transmit />
       </div>

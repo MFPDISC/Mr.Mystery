@@ -12,10 +12,8 @@ export default function RadioDialNav({ currentSection = 'new-release' }: RadioDi
 
     const sections = [
         { id: 'new-release', label: '01 // INTENTION', href: '#new-release' },
-        { id: 'vault', label: '02 // THE VAULT', href: '#vault' },
-        { id: 'product', label: '03 // MERCH CAPSULE', href: '#product' },
-        { id: 'streaming', label: '04 // FREQUENCIES', href: '#streaming' },
-        { id: 'transmit', label: '05 // TRANSMIT', href: '#transmit' },
+        { id: 'streaming', label: '02 // FREQUENCIES', href: '#streaming' },
+        { id: 'transmit', label: '03 // TRANSMIT', href: '#transmit' },
     ]
 
     const scrollToSection = (href: string) => {
