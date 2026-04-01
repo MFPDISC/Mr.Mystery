@@ -18,11 +18,7 @@ export default function UnreleasedSection() {
 
     // Tracks array - we'll fill the file paths once you drop the MP3s!
     const tracks: Track[] = [
-        { id: 'track-01', title: 'CONTINENTAL (INTRO)', duration: '1:45', file: '/Mr.Mystery/continental-intro.mp3' },
-        { id: 'track-02', title: 'LACK HONESTY FT. B-RAIZ', duration: '3:24', file: '/Mr.Mystery/lack-honesty.mp3' },
-        { id: 'track-03', title: 'DAY-TO-DAY FT. YUNGSMOKE', duration: '4:12', file: '/Mr.Mystery/day-to-day.mp3' },
-        { id: 'track-04', title: 'LONG SHOT', duration: '3:15', isLocked: true },
-        { id: 'track-05', title: 'VAULT_FRAGMENT_09', duration: '2:30', isLocked: true },
+        { id: 'track-01', title: 'SUSPENSION', duration: '??:??', file: '/audio/suspension.mp3' },
     ]
 
     const togglePlay = (track: Track) => {
