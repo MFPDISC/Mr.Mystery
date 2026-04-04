@@ -5,33 +5,8 @@ import { motion } from 'framer-motion'
 import { Play, Pause, ExternalLink } from 'lucide-react'
 
 export default function NewRelease() {
-    const releaseDate = new Date('2026-04-03T00:03:00').getTime()
-    const [timeLeft, setTimeLeft] = useState({ days: 0, hours: 0, minutes: 0, seconds: 0 })
-    const [isReleased, setIsReleased] = useState(false)
     const [isPlaying, setIsPlaying] = useState(false)
     const audioRef = useRef<HTMLAudioElement | null>(null)
-
-    useEffect(() => {
-        const timer = setInterval(() => {
-            const now = new Date().getTime()
-            const distance = releaseDate - now
-
-            if (distance < 0) {
-                clearInterval(timer)
-                setIsReleased(true)
-                setTimeLeft({ days: 0, hours: 0, minutes: 0, seconds: 0 })
-            } else {
-                setTimeLeft({
-                    days: Math.floor(distance / (1000 * 60 * 60 * 24)),
-                    hours: Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)),
-                    minutes: Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60)),
-                    seconds: Math.floor((distance % (1000 * 60)) / 1000)
-                })
-            }
-        }, 1000)
-
-        return () => clearInterval(timer)
-    }, [releaseDate])
 
     const togglePlay = () => {
         if (audioRef.current) {
@@ -82,41 +57,16 @@ export default function NewRelease() {
                     </p>
                 </motion.div>
 
-                {/* Countdown Timer */}
-                {!isReleased ? (
-                    <motion.div
-                        initial={{ opacity: 0, scale: 0.95 }}
-                        animate={{ opacity: 1, scale: 1 }}
-                        transition={{ duration: 0.8, delay: 0.2 }}
-                        className="flex gap-4 md:gap-8 mb-16"
-                    >
-                        {[
-                            { label: 'DAYS', value: timeLeft.days },
-                            { label: 'HOURS', value: timeLeft.hours },
-                            { label: 'MINUTES', value: timeLeft.minutes },
-                            { label: 'SECONDS', value: timeLeft.seconds }
-                        ].map((item, idx) => (
-                            <div key={idx} className="flex flex-col items-center">
-                                <div className="text-4xl md:text-6xl font-bold font-mono tracking-tighter mb-2">
-                                    {String(item.value).padStart(2, '0')}
-                                </div>
-                                <div className="text-[10px] md:text-xs text-white/40 tracking-[0.2em] uppercase">
-                                    {item.label}
-                                </div>
-                            </div>
-                        ))}
-                    </motion.div>
-                ) : (
-                    <motion.div
-                        initial={{ opacity: 0, scale: 0.95 }}
-                        animate={{ opacity: 1, scale: 1 }}
-                        className="mb-16 text-center"
-                    >
-                        <h3 className="text-3xl md:text-4xl font-bold text-transmission tracking-[0.2em] mb-2 animate-pulse">
-                            OUT NOW
-                        </h3>
-                    </motion.div>
-                )}
+                {/* Status */}
+                <motion.div
+                    initial={{ opacity: 0, scale: 0.95 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    className="mb-16 text-center"
+                >
+                    <h3 className="text-3xl md:text-4xl font-bold text-transmission tracking-[0.2em] mb-2 animate-pulse">
+                        OUT NOW
+                    </h3>
+                </motion.div>
 
                 {/* Audio Preview Area */}
                 <motion.div
@@ -183,40 +133,31 @@ export default function NewRelease() {
                     />
                 </motion.div>
 
-                {/* CTA Buttons */}
                 <motion.div
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.8, delay: 0.6 }}
                     className="flex flex-col items-center gap-6 w-full"
                 >
-                    {!isReleased ? (
-                        <div className="w-full max-w-sm">
-                            <a 
-                                href="https://distrokid.com/hyperfollow/mrmystery/intention?utm_campaign=website&utm_medium=Email+&utm_source=SendGrid&utm_content=link_in_bio&fbclid=PAdGRleAQ6U_hleHRuA2FlbQIxMQBzcnRjBmFwcF9pZA8xMjQwMjQ1NzQyODc0MTQAAae5yO_YX1GrRDY1vyV2P138x_JJ1wOnW0dLjo-jkVZOGgHpltAEoritk0yfFg_aem_taVRHMZTtGKnYyy7ZUNpXw" 
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className="group relative w-full flex items-center justify-center gap-3 p-4 border-2 border-white bg-white text-black hover:bg-black hover:text-white transition-all duration-300 font-bold tracking-[0.2em]"
-                            >
-                                <span>PRE-SAVE NOW</span>
-                                <ExternalLink className="w-4 h-4 opacity-50 group-hover:opacity-100" />
-                            </a>
-                            <p className="text-center text-[10px] text-white/40 mt-3 tracking-widest uppercase">
-                                Links generated upon request. Will redirect to preferred platform.
-                            </p>
-                        </div>
-                    ) : (
-                        <div className="w-full max-w-sm flex flex-col gap-4">
-                            <a href="https://open.spotify.com/artist/2sHBjhLpyKfZrCgRyJCxj2?si=4SmqgkhuTo-IEARgY_ckfw" target="_blank" rel="noopener noreferrer" className="group relative w-full flex items-center justify-center gap-3 p-4 border border-white hover:bg-white hover:text-black transition-all duration-300 font-bold tracking-[0.2em]">
-                                <span>SPOTIFY</span>
-                                <ExternalLink className="w-4 h-4" />
-                            </a>
-                            <a href="https://music.apple.com/za/artist/mr-mystery/1697213875" target="_blank" rel="noopener noreferrer" className="group relative w-full flex items-center justify-center gap-3 p-4 border border-white hover:bg-white hover:text-black transition-all duration-300 font-bold tracking-[0.2em]">
-                                <span>APPLE MUSIC</span>
-                                <ExternalLink className="w-4 h-4" />
-                            </a>
-                        </div>
-                    )}
+                    <div className="w-full max-w-sm flex flex-col gap-4">
+                        <a 
+                            href="https://distrokid.com/hyperfollow/mrmystery/intention?utm_campaign=website&utm_medium=Email+&utm_source=SendGrid&utm_content=link_in_bio&fbclid=PAdGRleAQ6U_hleHRuA2FlbQIxMQBzcnRjBmFwcF9pZA8xMjQwMjQ1NzQyODc0MTQAAae5yO_YX1GrRDY1vyV2P138x_JJ1wOnW0dLjo-jkVZOGgHpltAEoritk0yfFg_aem_taVRHMZTtGKnYyy7ZUNpXw" 
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="group relative w-full flex items-center justify-center gap-3 p-4 border-2 border-white bg-white text-black hover:bg-black hover:text-white transition-all duration-300 font-bold tracking-[0.2em]"
+                        >
+                            <span>STREAM NOW</span>
+                            <ExternalLink className="w-4 h-4 opacity-50 group-hover:opacity-100" />
+                        </a>
+                        <a href="https://open.spotify.com/artist/2sHBjhLpyKfZrCgRyJCxj2?si=4SmqgkhuTo-IEARgY_ckfw" target="_blank" rel="noopener noreferrer" className="group relative w-full flex items-center justify-center gap-3 p-4 border border-white hover:bg-white hover:text-black transition-all duration-300 font-bold tracking-[0.2em]">
+                            <span>SPOTIFY</span>
+                            <ExternalLink className="w-4 h-4" />
+                        </a>
+                        <a href="https://music.apple.com/za/artist/mr-mystery/1697213875" target="_blank" rel="noopener noreferrer" className="group relative w-full flex items-center justify-center gap-3 p-4 border border-white hover:bg-white hover:text-black transition-all duration-300 font-bold tracking-[0.2em]">
+                            <span>APPLE MUSIC</span>
+                            <ExternalLink className="w-4 h-4" />
+                        </a>
+                    </div>
                 </motion.div>
             </div>
         </section>

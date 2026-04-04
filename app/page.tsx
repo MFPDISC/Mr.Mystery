@@ -1,7 +1,5 @@
 'use client'
 
-import { useState, useEffect } from 'react'
-import SignalLanding from '@/components/SignalLanding'
 import NewRelease from '@/components/NewRelease'
 import UnreleasedSection from '@/components/UnreleasedSection'
 import Transmit from '@/components/Transmit'
@@ -9,16 +7,6 @@ import StreamingLinks from '@/components/StreamingLinks'
 import { motion } from 'framer-motion'
 
 export default function Home() {
-  const [showLanding, setShowLanding] = useState(true)
-
-  const handleTuneIn = () => {
-    setShowLanding(false)
-  }
-
-  if (showLanding) {
-    return <SignalLanding onTuneIn={handleTuneIn} />
-  }
-
   return (
     <main className={`min-h-screen bg-background text-white`}>
       {/* Grain overlay for entire site */}
