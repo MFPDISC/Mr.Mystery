@@ -3,6 +3,7 @@
 import { useState, useRef, useEffect } from 'react'
 import { motion } from 'framer-motion'
 import { Play, Pause, Lock } from 'lucide-react'
+import { trackEvent } from '@/utils/analytics'
 
 interface Track {
     id: string
@@ -64,6 +65,7 @@ export default function UnreleasedSection() {
             if (audioRef.current) {
                 audioRef.current.src = track.file || ''
                 audioRef.current.play().catch(e => console.error("Playback error:", e))
+                trackEvent('song_streams')
             }
         }
     }
