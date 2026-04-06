@@ -2,6 +2,7 @@
 
 import { motion } from 'framer-motion'
 import { ExternalLink, Music, Disc, Radio, Youtube, Instagram } from 'lucide-react'
+import { trackEvent } from '@/utils/analytics'
 
 export default function StreamingLinks() {
     const links = [
@@ -75,6 +76,7 @@ export default function StreamingLinks() {
                             href={link.url}
                             target="_blank"
                             rel="noopener noreferrer"
+                            onClick={() => trackEvent(`stream_link_${link.name.toLowerCase().replace(/\s+/g, '_')}`)}
                             initial={{ opacity: 0, x: -20 }}
                             whileInView={{ opacity: 1, x: 0 }}
                             viewport={{ once: true }}

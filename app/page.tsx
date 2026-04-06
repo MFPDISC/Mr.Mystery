@@ -4,9 +4,15 @@ import NewRelease from '@/components/NewRelease'
 import UnreleasedSection from '@/components/UnreleasedSection'
 import Transmit from '@/components/Transmit'
 import StreamingLinks from '@/components/StreamingLinks'
+import { useEffect } from 'react'
+import { trackEvent } from '@/utils/analytics'
 import { motion } from 'framer-motion'
 
 export default function Home() {
+  useEffect(() => {
+    trackEvent('site_visits');
+  }, []);
+
   return (
     <main className={`min-h-screen bg-background text-white`}>
       {/* Grain overlay for entire site */}

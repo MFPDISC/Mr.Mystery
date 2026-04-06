@@ -3,6 +3,7 @@
 import { useState, useEffect, useRef } from 'react'
 import { motion } from 'framer-motion'
 import { Play, Pause, ExternalLink } from 'lucide-react'
+import { trackEvent } from '@/utils/analytics'
 
 export default function NewRelease() {
     const [isPlaying, setIsPlaying] = useState(false)
@@ -15,6 +16,7 @@ export default function NewRelease() {
             } else {
                 // Ensure audio isn't blocked by browser autoplay policies
                 audioRef.current.play().catch(e => console.error("Audio playback prevented:", e))
+                trackEvent('song_streams')
             }
             setIsPlaying(!isPlaying)
         }
@@ -144,6 +146,7 @@ export default function NewRelease() {
                             href="https://distrokid.com/hyperfollow/mrmystery/intention?utm_campaign=website&utm_medium=Email+&utm_source=SendGrid&utm_content=link_in_bio&fbclid=PAdGRleAQ6U_hleHRuA2FlbQIxMQBzcnRjBmFwcF9pZA8xMjQwMjQ1NzQyODc0MTQAAae5yO_YX1GrRDY1vyV2P138x_JJ1wOnW0dLjo-jkVZOGgHpltAEoritk0yfFg_aem_taVRHMZTtGKnYyy7ZUNpXw" 
                             target="_blank"
                             rel="noopener noreferrer"
+                            onClick={() => trackEvent('stream_now_clicks')}
                             className="group relative w-full flex items-center justify-center gap-3 p-4 border-2 border-white bg-white text-black hover:bg-black hover:text-white transition-all duration-300 font-bold tracking-[0.2em]"
                         >
                             <span>STREAM NOW</span>
