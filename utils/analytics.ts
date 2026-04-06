@@ -2,6 +2,7 @@ export const NAMESPACE = 'mrmystery_analytics_live_2026';
 export const IS_PRODUCTION = process.env.NODE_ENV === 'production';
 
 export const trackEvent = async (eventName: string) => {
+    console.log(`[ANALYTICS] Tracking: ${eventName}`);
     try {
         await fetch(`https://api.counterapi.dev/v1/${NAMESPACE}/${eventName}/up`);
     } catch (error) {
