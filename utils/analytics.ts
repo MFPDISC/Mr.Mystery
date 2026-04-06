@@ -2,9 +2,6 @@ export const NAMESPACE = 'mrmystery_analytics_x8f9a2b';
 export const IS_PRODUCTION = process.env.NODE_ENV === 'production';
 
 export const trackEvent = async (eventName: string) => {
-    // Only track in production to avoid polluting stats during dev
-    if (!IS_PRODUCTION) return;
-    
     try {
         await fetch(`https://api.counterapi.dev/v1/${NAMESPACE}/${eventName}/up`);
     } catch (error) {
