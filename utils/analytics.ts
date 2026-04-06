@@ -1,4 +1,4 @@
-export const NAMESPACE = 'mrmystery_analytics_x8f9a2b';
+export const NAMESPACE = 'mrmystery_analytics_live_2026';
 export const IS_PRODUCTION = process.env.NODE_ENV === 'production';
 
 export const trackEvent = async (eventName: string) => {
