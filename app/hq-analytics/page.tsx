@@ -3,7 +3,7 @@
 import { useState, useEffect } from 'react'
 import { motion } from 'framer-motion'
 import { getEventCount, IS_PRODUCTION } from '@/utils/analytics'
-import { BarChart3, Lock, RefreshCw, Eye, Music, MousePointer2 } from 'lucide-react'
+import { BarChart3, Lock, RefreshCw, Eye, Music, MousePointer2, Download } from 'lucide-react'
 
 export default function AnalyticsDashboard() {
     const [isAuthenticated, setIsAuthenticated] = useState(false)
@@ -19,7 +19,8 @@ export default function AnalyticsDashboard() {
         apple_music: 0,
         youtube: 0,
         soundcloud: 0,
-        instagram: 0
+        instagram: 0,
+        download_mp3_clicks: 0
     })
 
     const handleLogin = (e: React.FormEvent) => {
@@ -45,7 +46,8 @@ export default function AnalyticsDashboard() {
                 apple_music,
                 youtube,
                 soundcloud,
-                instagram
+                instagram,
+                download_mp3_clicks
             ] = await Promise.all([
                 getEventCount('site_visits'),
                 getEventCount('song_streams'),
@@ -54,7 +56,8 @@ export default function AnalyticsDashboard() {
                 getEventCount('stream_link_apple_music'),
                 getEventCount('stream_link_youtube'),
                 getEventCount('stream_link_soundcloud'),
-                getEventCount('stream_link_instagram')
+                getEventCount('stream_link_instagram'),
+                getEventCount('download_mp3_clicks')
             ])
 
             setStats({
@@ -65,7 +68,8 @@ export default function AnalyticsDashboard() {
                 apple_music,
                 youtube,
                 soundcloud,
-                instagram
+                instagram,
+                download_mp3_clicks
             })
         } catch (err) {
             console.error("Failed to load stats", err)
@@ -157,6 +161,12 @@ export default function AnalyticsDashboard() {
                         value={stats.stream_now_clicks} 
                         icon={<MousePointer2 className="w-6 h-6" />}
                         description="Direct intent to stream"
+                    />
+                    <StatCard 
+                        title="MP3 DOWNLOADS" 
+                        value={stats.download_mp3_clicks} 
+                        icon={<Download className="w-6 h-6" />}
+                        description="Retention & offline plays"
                     />
                 </div>
 

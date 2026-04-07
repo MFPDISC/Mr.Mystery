@@ -2,7 +2,7 @@
 
 import { useState, useEffect, useRef } from 'react'
 import { motion } from 'framer-motion'
-import { Play, Pause, ExternalLink } from 'lucide-react'
+import { Play, Pause, ExternalLink, Download } from 'lucide-react'
 import { trackEvent } from '@/utils/analytics'
 
 export default function NewRelease() {
@@ -151,6 +151,15 @@ export default function NewRelease() {
                         >
                             <span>STREAM NOW</span>
                             <ExternalLink className="w-4 h-4 opacity-50 group-hover:opacity-100" />
+                        </a>
+                        <a 
+                            href="/Mr.Mystery/intention.mp3" 
+                            download="Mr. Mystery - INTENTION.mp3"
+                            onClick={() => trackEvent('download_mp3_clicks')}
+                            className="group relative w-full flex items-center justify-center gap-3 p-4 border-2 border-transmission bg-transmission text-black hover:bg-black hover:text-transmission transition-all duration-300 font-bold tracking-[0.2em]"
+                        >
+                            <span>DOWNLOAD MP3</span>
+                            <Download className="w-4 h-4" />
                         </a>
                         <a href="https://open.spotify.com/artist/2sHBjhLpyKfZrCgRyJCxj2?si=4SmqgkhuTo-IEARgY_ckfw" target="_blank" rel="noopener noreferrer" className="group relative w-full flex items-center justify-center gap-3 p-4 border border-white hover:bg-white hover:text-black transition-all duration-300 font-bold tracking-[0.2em]">
                             <span>SPOTIFY</span>
